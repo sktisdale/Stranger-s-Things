@@ -26,7 +26,9 @@ export default function Register({setToken, setUser}){
               console.log(result);
               if (result.success){
                 setToken(result.data.token);
+                localStorage.setItem("token", result.data.token);
                 setUser(username)
+                localStorage.setItem("username", username);
               }     
         } catch (error) {
             

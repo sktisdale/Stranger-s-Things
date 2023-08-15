@@ -23,9 +23,10 @@ export default function Login({setToken, setUser}){
                 })
               });
               const result = await response.json();
-              console.log(result, username);
-              setToken(result.data.token)
+              setToken(result.data.token);
+              localStorage.setItem("token", result.data.token);
               setUser(username)
+              localStorage.setItem("username", username)
         } catch (error) {
             
         }
