@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+
+import Posts from './components/DisplayPosts'
+import NewPost from './components/NewPost'
+
 import Login from './components/Login'
 import Register from './components/Register'
 
@@ -40,6 +44,9 @@ function App() {
       <button onClick={logOut}>Log out</button>
       </>}
       
+      <NewPost token={token}/>
+      <Posts />
+
     </>
   )
 }
