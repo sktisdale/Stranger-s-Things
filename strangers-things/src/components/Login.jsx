@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Login({token, setToken}){
+export default function Login({setToken, setUser}){
     const COHORT_NAME = '2305-FTB-MT-WEB-PT'
     const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
@@ -23,8 +23,9 @@ export default function Login({token, setToken}){
                 })
               });
               const result = await response.json();
-              console.log(result);
+              console.log(result, username);
               setToken(result.data.token)
+              setUser(username)
         } catch (error) {
             
         }
@@ -32,8 +33,8 @@ export default function Login({token, setToken}){
 
     return(<>
         <form onSubmit={login}>
-            <input type="text" className="username" placeholder="Username" value={username} onChange={(event)=>{setUsername(event)}}/>
-            <input type="password" className="password" placeholder="Password" value={password} onChange={(event)=>{setPassword(event)}} />
+            <input type="text" className="username" placeholder="Username" value={username} onChange={(event)=>{setUsername(event.target.value)}}/>
+            <input type="password" className="password" placeholder="Password" value={password} onChange={(event)=>{setPassword(event.target.value)}} />
             <input type="submit" name="submit" id="submit" value="Log In" />
         </form>
     </>)
