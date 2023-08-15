@@ -11,6 +11,7 @@ function App() {
   // Scope for token and user set to app page for ability to pass to any child
   const [token, setToken] = useState('');
   const [user, setUser] = useState('');
+  const [showNewPost, setShowNewPost] = useState(false);
 
   useEffect(()=>{
     let savedToken = localStorage.getItem("token");
@@ -42,9 +43,11 @@ function App() {
       :<>
       <h1>You are logged in as {user}</h1>
       <button onClick={logOut}>Log out</button>
+      <br />
+      <button onClick={()=>{setShowNewPost(!showNewPost)}}>New post</button>
       </>}
       
-      <NewPost token={token}/>
+      {showNewPost? <NewPost token={token}/>:<></>}
       <Posts />
 
     </>
