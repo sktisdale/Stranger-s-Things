@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
+import PostMessage from './PostMessage'
 
 const COHORT_NAME = '2305-FTB-MT-WEB-PT'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
-export default function Posts(){
+export default function Posts(token){
 
     const [posts, setPosts] = useState([]);
 
@@ -49,6 +50,7 @@ export default function Posts(){
             }
         </tbody>
     </table>
+    <PostMessage token={token}/>
       </>
     )
   }
