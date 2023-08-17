@@ -6,12 +6,14 @@ import NewPost from './components/NewPost'
 
 import Login from './components/Login'
 import Register from './components/Register'
+import Profile from './components/Profile'
 
 function App() {
   // Scope for token and user set to app page for ability to pass to any child
   const [token, setToken] = useState('');
   const [user, setUser] = useState('');
   const [showNewPost, setShowNewPost] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
 
   useEffect(()=>{
     let savedToken = localStorage.getItem("token");
@@ -34,6 +36,7 @@ function App() {
 
   return (
     <>
+     {/* TODO: set up where Login, Register, Profile components are rendered on page as separate routes */}
       {!token? <>
       <h1>To begin, please login:</h1>
       <Login setToken={setToken} setUser={setUser} />
@@ -45,10 +48,13 @@ function App() {
       <button onClick={logOut}>Log out</button>
       <br />
       <button onClick={()=>{setShowNewPost(!showNewPost)}}>New post</button>
+      <button onClick={()=>{setShowProfile(!showProfile)}}>View Profile</button>
       </>}
       
       {showNewPost? <NewPost token={token}/>:<></>}
-      <Posts />
+      {showProfile? <Profile token={token}/>:<></>}
+      <Posts token={token}/>
+      
 
     </>
   )
