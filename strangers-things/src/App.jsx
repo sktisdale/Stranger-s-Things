@@ -51,7 +51,7 @@ function App() {
       <button onClick={()=>{setShowProfile(!showProfile)}}>View Profile</button>
       </>}
       
-      {showNewPost? <NewPost token={token}/>:<></>}
+      {showNewPost? <NewPost token={token} />:<></>}
       {showProfile? <Profile token={token}/>:<></>}
       <Posts token={token} user={user}/>
       
