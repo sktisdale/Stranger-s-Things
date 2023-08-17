@@ -3,6 +3,7 @@ import './App.css'
 
 import Posts from './components/DisplayPosts'
 import NewPost from './components/NewPost'
+import PostMessage from './components/PostMessage'
 
 import Login from './components/Login'
 import Register from './components/Register'
@@ -46,6 +47,7 @@ function App() {
       
       <NewPost token={token}/>
       <Posts />
+      <PostMessage/>
 
     </>
   )
