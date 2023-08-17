@@ -51,6 +51,19 @@ export default function Profile({ token }) {
                         }
                     </tbody>
                 </table>
+            <div className="messages">
+                <h1>Your Messages:</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Your Message</th>
+                            </tr>
+                        </thead>
+                        
+                    </table>
+
+            </div>
                 
             </div>
         </>
