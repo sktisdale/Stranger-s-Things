@@ -5,7 +5,7 @@ import Message from "./Messages";
 const COHORT_NAME = '2305-FTB-MT-WEB-PT'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
-export default function Posts({token}){
+export default function Posts({token, user}){
 
     const [posts, setPosts] = useState([]);
 
@@ -14,7 +14,7 @@ export default function Posts({token}){
             try {
                 const response = await fetch(`${BASE_URL}/posts`)
                 const result = await response.json();
-                console.log(result);
+                // console.log(result);
                 setPosts(result.data.posts)
                 return result
               } catch (err) {
@@ -25,8 +25,6 @@ export default function Posts({token}){
         getPosts()
 
     }, [])
-    
-
 
     return(<>   
     <table>
@@ -40,13 +38,13 @@ export default function Posts({token}){
         <tbody>
             {
             posts.map((post)=>{
+                let yourpost = (post.author.username === user);
                 return (
                     <tr key={post._id}>
                         <td>{post.title}</td>
                         <td>{post.description}</td>
                         <td>{post.price}</td>
-                        <td><button onClick={()=>DeletePost(post._id)}>Delete</button></td>
-                        <td>{<Message POST_ID={post._id} token={token} />}</td> 
+                        <td>{yourpost?<button onClick={()=>DeletePost(post._id)}>Delete</button>:<Message POST_ID={post._id} token={token} />}</td>
                     </tr>
                 )
             })

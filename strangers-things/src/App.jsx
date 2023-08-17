@@ -53,7 +53,7 @@ function App() {
       
       {showNewPost? <NewPost token={token}/>:<></>}
       {showProfile? <Profile token={token}/>:<></>}
-      <Posts token={token}/>
+      <Posts token={token} user={user}/>
       
 
     </>
