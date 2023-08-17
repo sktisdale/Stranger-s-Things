@@ -7,7 +7,6 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 export default function Posts({token}){
 
     const [posts, setPosts] = useState([]);
-    const [reply, setReply] = useState([]);
 
     useEffect(()=>{
         async function getPosts(){
