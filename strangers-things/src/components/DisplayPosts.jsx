@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react"
+import Message from "./Messages";
 
 const COHORT_NAME = '2305-FTB-MT-WEB-PT'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
-export default function Posts(){
+export default function Posts({token}){
 
     const [posts, setPosts] = useState([]);
+    const [reply, setReply] = useState([]);
 
     useEffect(()=>{
         async function getPosts(){
@@ -43,6 +45,7 @@ export default function Posts(){
                         <td>{post.title}</td>
                         <td>{post.description}</td>
                         <td>{post.price}</td>
+                        <td>{<Message POST_ID={post._id} token={token} />}</td> 
                     </tr>
                 )
             })
