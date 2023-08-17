@@ -47,7 +47,7 @@ function App() {
       
       <NewPost token={token}/>
       <Posts />
-      <PostMessage/>
+     
 
     </>
   )
