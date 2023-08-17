@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import DeletePost from "./DeletePost";
 import Message from "./Messages";
 
 const COHORT_NAME = '2305-FTB-MT-WEB-PT'
@@ -44,6 +45,7 @@ export default function Posts({token}){
                         <td>{post.title}</td>
                         <td>{post.description}</td>
                         <td>{post.price}</td>
+                        <td><button onClick={()=>DeletePost(post._id)}>Delete</button></td>
                         <td>{<Message POST_ID={post._id} token={token} />}</td> 
                     </tr>
                 )
