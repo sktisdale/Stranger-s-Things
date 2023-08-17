@@ -1,17 +1,61 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 
-export default function PostNewMessage(){
-    const [message, setMessage]= useState(null)
+
+export default function PostNewMessage({token, post}){
+    const [message, setMessage]= useState("")
+    const [isPostAuthor, setIsPostAuthor] = useState(false);
+    const COHORT_NAME = '2305-FTB-MT-WEB-PT'
+    const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
+
+    const postMessage = async (event) => {
+         event.preventDefault();
+        try {
+          const response = await fetch(`${BASE_URL}/posts/5e8929ddd439160017553e06/messages`, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json',
+             'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              message: {
+                content: "Do you still have this?  Would you take $10 less?"
+              }
+            })
+          });
+          const result = await response.json();
+          console.log(result);
+         
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      useEffect(()=> {
+        // is logged-in user the post author?
+        setIsPostAuthor(post.author._id ===token.userId);},
+        [post.author._id, token.userId]);
+
+        // display message form only if logg-ing user is not hte poster
     return (
         <>
-            <h2>Respond to this post</h2>
-            <form onSubmit={(()=>{})}>
-                <label htmlFor = "message">Send a message:</label>
-                <input type = "text" id = "message" name = "message" value = {message} onChange={(event)=> setMessage(event.target.value)}/>
-                <input type="submit" value="Send"/>
-            </form>
+            {!isPostAuthor && (
+                <div>
+                <h2>Respond to this post</h2>
+                 <form onSubmit={postMessage}>
+                        <label htmlFor = "message">Send a message:</label>
+                        <input 
+                        type = "text" 
+                        id = "message" 
+                        name = "message" 
+                        value = {message} 
+                        onChange={(event)=> setMessage(event.target.value)}
+                        />
+                        <input type="submit" name="submit" id="submit" value="Post Message" />
+                </form>
+                </div>
+            )}
         </>
-    )
+    );
 }
 
 

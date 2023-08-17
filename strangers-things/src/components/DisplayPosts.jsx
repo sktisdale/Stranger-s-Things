@@ -50,7 +50,9 @@ export default function Posts(token){
             }
         </tbody>
     </table>
+    <div>
     <PostMessage token={token}/>
+    </div>
       </>
     )
   }
