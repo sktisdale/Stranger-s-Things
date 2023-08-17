@@ -16,7 +16,6 @@ export default function NewPost({token}) {
     async function createPost(event) {
       event.preventDefault()
             try {
-                // let token = localStorage.setItem("token")
                 const response = await fetch(`${BASE_URL}/posts`, {
                   method: "POST",
                   headers: {
