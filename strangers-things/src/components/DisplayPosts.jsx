@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
+import DeletePost from "./DeletePost";
 
 const COHORT_NAME = '2305-FTB-MT-WEB-PT'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
-export default function Posts(){
+export default function Posts({}){
 
     const [posts, setPosts] = useState([]);
 
@@ -43,6 +44,7 @@ export default function Posts(){
                         <td>{post.title}</td>
                         <td>{post.description}</td>
                         <td>{post.price}</td>
+                        <td><button onClick={()=>DeletePost(post._id)}>Delete</button></td>
                     </tr>
                 )
             })
