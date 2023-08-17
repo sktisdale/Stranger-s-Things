@@ -10,6 +10,7 @@ export default function NewPost({token}) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
+    const [success, setSuccess] = useState(false)
 
  
     async function createPost(event) {
@@ -32,7 +33,12 @@ export default function NewPost({token}) {
                 });
                 const result = await response.json();
                 console.log(result);
-                
+                if (result.success){
+                  setTitle("")
+                  setDescription("");
+                  setPrice("");
+                  setSuccess(true)
+                }
                 return result
               } catch (err) {
                 console.error(err);
@@ -43,7 +49,9 @@ export default function NewPost({token}) {
       
     return (
         <>
-        <h2>New Post</h2>
+        {!success?<h2>New Post</h2>:<h2>Post submitted!</h2> }
+        
+        {!success? 
          <form onSubmit={createPost}>
             <div>
               <label htmlFor = "title">Title:</label>
@@ -63,7 +71,10 @@ export default function NewPost({token}) {
             <br/>
             <input type="submit" value="Submit"/>
             
-         </form>  
+         </form> 
+         :
+         <button onClick={()=>{setSuccess(false)}}>Post again</button>
+        }
         </>
     )
 }
