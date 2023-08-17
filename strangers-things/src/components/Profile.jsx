@@ -51,6 +51,32 @@ export default function Profile({ token }) {
                         }
                     </tbody>
                 </table>
+            <div className="messages">
+                <h1>Your Messages:</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Original Post Id</th>
+                                <th>Your Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                userData.messages.map((message)=> {
+                                    return (
+                                        <tr key={message._id}>
+                                            <td>{message.post.title}</td>
+                                            <td>{message.post._id}</td>
+                                            <td>{message.content}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+
+            </div>
                 
             </div>
         </>
