@@ -27,7 +27,7 @@ export default function Posts({token, user}){
     }, [])
 
     return(<>   
-    <table>
+    {/* <table>
         <thead>
             <tr>
                 <th>Title</th>
@@ -35,22 +35,23 @@ export default function Posts({token, user}){
                 <th>Price</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody> */}
             {
             posts.map((post)=>{
                 let yourpost = (post.author.username === user);
                 return (
-                    <tr key={post._id}>
-                        <td>{post.title}</td>
-                        <td>{post.description}</td>
-                        <td>{post.price}</td>
-                        <td>{yourpost?<button onClick={()=>DeletePost(post._id)}>Delete</button>:<Message POST_ID={post._id} token={token} />}</td>
-                    </tr>
+                    <div className="post"key={post._id}>
+                        <h3 className="postTitle">{post.title}</h3>
+                        <p className="descr">Description:{post.description}</p>
+                        <p className="price">Price:{post.price}</p>
+                        <p>{yourpost?<button onClick={()=>DeletePost(post._id)}>Delete</button>:<Message POST_ID={post._id} token={token} />}</p>
+                    </div>
+                   
                 )
             })
             }
-        </tbody>
-    </table>
+        {/* </tbody>
+    </table> */}
       </>
     )
   }
