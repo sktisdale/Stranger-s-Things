@@ -1,16 +1,51 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel');
 
-body {
+.body {
     background-color: black;
+    
 }
 
-#pageTitle {
+#startup {
+    font-family: 'Cinzel', serif;
+    color: red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0.5rem;
+}
+
+.login {
+    font-family: 'Cinzel', serif;
+    color: red;
+}
+
+.pageTitle {
     width: 100vw;
     height: 15vh;
-    margin:0rem;
+    margin-top: .5rem;
+    font-family: 'Cinzel', serif;
+    font-size:4rem;
+    color: red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.centeredContainer {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.postHeader {
     font-family: 'Cinzel', serif;
     font-size:3rem;
     color: red;
+    
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -21,19 +56,30 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.post {
+   
     background-color: red;
-    width: 60vw;
+    width: 65vw;
     margin: 0.5 rem 0;
     padding: 0.5rem;
     height: fit-content;
     border-radius: 1rem;
 }
 
+/* .post {
+    background-color: red;
+    width: 65vw;
+    margin: 0.5 rem 0;
+    padding: 0.5rem;
+    height: fit-content;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
 .postInfo {
     background-color: white;
+    width: 62vw;
     padding: 1rem;
     margin: 0.5rem;
     display: flex;
