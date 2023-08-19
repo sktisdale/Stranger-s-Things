@@ -40,13 +40,16 @@ export default function Posts({token, user}){
             posts.map((post)=>{
                 let yourpost = (post.author.username === user);
                 return (
-                    <div className="post"key={post._id}>
-                        <h3 className="postTitle">{post.title}</h3>
-                        <p className="descr">Description:{post.description}</p>
-                        <p className="price">Price:{post.price}</p>
-                        <p>{yourpost?<button onClick={()=>DeletePost(post._id)}>Delete</button>:<Message POST_ID={post._id} token={token} />}</p>
-                    </div>
-                   
+                    <div className="postContainer">
+                        <div className="post" key={post._id}>
+                        <div className="postInfo">
+                                <h3 className="postTitle">{post.title}</h3>
+                                <p className="descr">Description:{post.description}</p>
+                                <p className="price">Price:{post.price}</p>
+                                <p>{yourpost?<button onClick={()=>DeletePost(post._id)}>Delete</button>:<Message POST_ID={post._id} token={token} />}</p>
+                            </div>
+                        </div>
+                        </div>
                 )
             })
             }

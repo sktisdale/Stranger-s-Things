@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel');
 
-
+body {
+    background-color: black;
+}
 
 #pageTitle {
     width: 100vw;
@@ -13,4 +15,28 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.postContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post {
+    background-color: red;
+    width: 60vw;
+    margin: 0.5 rem 0;
+    padding: 0.5rem;
+    height: fit-content;
+    border-radius: 1rem;
+}
+
+.postInfo {
+    background-color: white;
+    padding: 1rem;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
 }
