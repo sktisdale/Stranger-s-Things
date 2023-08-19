@@ -35,7 +35,8 @@ function App() {
   }
 
   return (
-    <>
+    <body>
+    <h1 id="pageTitle" link rel='stylesheet' href="https://fonts.google.com/specimen/Cinzel">Stranger's Things</h1>
      {/* TODO: set up where Login, Register, Profile components are rendered on page as separate routes */}
       {!token? <>
       <h1>To begin, please login:</h1>
@@ -54,9 +55,8 @@ function App() {
       {showNewPost? <NewPost token={token} />:<></>}
       {showProfile? <Profile token={token}/>:<></>}
       <Posts token={token} user={user}/>
-      
 
-    </>
+    </body>
   )
 }
 

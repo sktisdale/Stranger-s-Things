@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
+
+
+
+#pageTitle {
+    width: 100vw;
+    height: 15vh;
+    margin:0rem;
+    font-family: 'Cinzel', serif;
+    font-size:3rem;
+    color: red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
