@@ -5,52 +5,42 @@ import Message from "./Messages";
 const COHORT_NAME = '2305-FTB-MT-WEB-PT'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
-export default function Posts({token, user}){
+export default function Posts({ token, user }) {
 
     const [posts, setPosts] = useState([]);
 
-    useEffect(()=>{
-        async function getPosts(){
+    useEffect(() => {
+        async function getPosts() {
             try {
                 const response = await fetch(`${BASE_URL}/posts`)
                 const result = await response.json();
                 // console.log(result);
                 setPosts(result.data.posts)
                 return result
-              } catch (err) {
+            } catch (err) {
                 console.error(err);
-              }
+            }
         }
 
         getPosts()
 
     }, [])
 
-    return(<>   
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            {
-            posts.map((post)=>{
+    return (
+        <div className="centeredContainer"> {/* Correct class name here */}
+            {posts.map((post) => {
                 let yourpost = (post.author.username === user);
                 return (
-                    <tr key={post._id}>
-                        <td>{post.title}</td>
-                        <td>{post.description}</td>
-                        <td>{post.price}</td>
-                        <td>{yourpost?<button onClick={()=>DeletePost(post._id)}>Delete</button>:<Message POST_ID={post._id} token={token} />}</td>
-                    </tr>
-                )
-            })
-            }
-        </tbody>
-    </table>
-      </>
-    )
-  }
+                    <div className="postContainer" key={post._id}>
+                        <div className="postInfo">
+                            <h3 className="postTitle">{post.title}</h3>
+                            <p className="descr">Description:{post.description}</p>
+                            <p className="price">Price:{post.price}</p>
+                            {yourpost ? <button onClick={() => DeletePost(post._id)}>Delete</button> : <Message POST_ID={post._id} token={token} />}
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
+    );
+}

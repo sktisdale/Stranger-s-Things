@@ -15,19 +15,19 @@ function App() {
   const [showNewPost, setShowNewPost] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     let savedToken = localStorage.getItem("token");
     let savedUser = localStorage.getItem("username")
-    if (savedToken){
+    if (savedToken) {
       setToken(savedToken);
       setUser(savedUser)
     } else {
       setToken(null);
     }
-    
-  },[])
 
-  function logOut(){
+  }, [])
+
+  function logOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("username")
     setToken(null);
@@ -35,28 +35,34 @@ function App() {
   }
 
   return (
-    <>
-     {/* TODO: set up where Login, Register, Profile components are rendered on page as separate routes */}
-      {!token? <>
-      <h1>To begin, please login:</h1>
-      <Login setToken={setToken} setUser={setUser} />
-      <h3>Or create an account:</h3>
-      <Register setToken={setToken} setUser={setUser} />
-      </> 
-      :<>
-      <h1>You are logged in as {user}</h1>
-      <button onClick={logOut}>Log out</button>
-      <br />
-      <button onClick={()=>{setShowNewPost(!showNewPost)}}>New post</button>
-      <button onClick={()=>{setShowProfile(!showProfile)}}>View Profile</button>
-      </>}
-      
-      {showNewPost? <NewPost token={token} />:<></>}
-      {showProfile? <Profile token={token}/>:<></>}
-      <Posts token={token} user={user}/>
-      
+    <div className = "body">
+      <h1 className="pageTitle">Stranger's Things</h1>
+      {/* TODO: set up where Login, Register, Profile components are rendered on page as separate routes */}
+      <div id="startup">
+        {!token ? <>
+          <div className="login">
+            <h2>To begin, please login:</h2>
+            <Login setToken={setToken} setUser={setUser} />
+          </div>
+          <div className="create-account">
+            <h3>Or create an account:</h3>
+            <Register setToken={setToken} setUser={setUser} />
+          </div>
+        </>
+          : <>
+            <h1>You are logged in as {user}</h1>
+            <button onClick={logOut}>Log out</button>
+            <br />
+            <button onClick={() => { setShowNewPost(!showNewPost) }}>New post</button>
+            <button onClick={() => { setShowProfile(!showProfile) }}>View Profile</button>
+          </>}
+        {showNewPost ? <NewPost token={token} /> : <></>}
+        {showProfile ? <Profile token={token} /> : <></>}
+      </div>
+      <h3 className="postHeader">Posts</h3>
+      <Posts token={token} user={user} />
 
-    </>
+    </div>
   )
 }
 
