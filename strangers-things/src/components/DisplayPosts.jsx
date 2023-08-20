@@ -36,7 +36,10 @@ export default function Posts({ token, user }) {
                             <h3 className="postTitle">{post.title}</h3>
                             <p className="descr">Description:{post.description}</p>
                             <p className="price">Price:{post.price}</p>
-                            {yourpost ? <button onClick={() => DeletePost(post._id)}>Delete</button> : <Message POST_ID={post._id} token={token} />}
+                            {yourpost ? 
+                            <button onClick={() => DeletePost(post._id)}>Delete</button> 
+                            : token ?
+                              <Message POST_ID={post._id} token={token} /> : <></>}
                         </div>
                     </div>
                 );
