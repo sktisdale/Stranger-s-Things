@@ -63,6 +63,7 @@ function App() {
         {showProfile ? <Profile token={token} /> : <></>}
       </div>
       <h3 className="postHeader">Posts</h3>
+     
       <Posts token={token} user={user} />
 
     </div>

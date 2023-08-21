@@ -12,9 +12,14 @@ export default function Posts({ token, user }) {
     function updateKeyword(keyword) {
         const filteredPosts = posts.filter((post) => {
         return `${post.title.toLowerCase()} ${post.description.toLowerCase()} ${post.price.toLowerCase()}`.includes(keyword.toLowerCase())})
-       setKeyword(keyword)
+           
+        setKeyword(keyword)
        setPosts(filteredPosts)
+   
+       
+    
       }
+      
     useEffect(() => {
         async function getPosts() {
             try {
@@ -37,13 +42,14 @@ export default function Posts({ token, user }) {
         
         <div className="centeredContainer"> {/* Correct class name here */}
         <SearchBar keyword={keyword} onChange={updateKeyword}/>  
-        
+            
             {posts.map((post) => {
                 let yourpost = (post.author.username === user);
                 return (
                     
                     <div className="postContainer" key={post._id}>
                         <div className="postInfo">
+                        
                             <h3 className="postTitle">{post.title}</h3>
                             <p className="descr">Description:{post.description}</p>
                             <p className="price">Price:{post.price}</p>
