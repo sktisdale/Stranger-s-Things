@@ -3,7 +3,7 @@ import './App.css'
 
 import Posts from './components/DisplayPosts'
 import NewPost from './components/NewPost'
-
+import SearchBar from './components/SearchBAr'
 import Login from './components/Login'
 import Register from './components/Register'
 import Profile from './components/Profile'
@@ -14,7 +14,9 @@ function App() {
   const [user, setUser] = useState('');
   const [showNewPost, setShowNewPost] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
-
+ 
+  
+ 
   useEffect(() => {
     let savedToken = localStorage.getItem("token");
     let savedUser = localStorage.getItem("username")
@@ -55,6 +57,7 @@ function App() {
             <br />
             <button onClick={() => { setShowNewPost(!showNewPost) }}>New post</button>
             <button onClick={() => { setShowProfile(!showProfile) }}>View Profile</button>
+            
           </>}
         {showNewPost ? <NewPost token={token} /> : <></>}
         {showProfile ? <Profile token={token} /> : <></>}
