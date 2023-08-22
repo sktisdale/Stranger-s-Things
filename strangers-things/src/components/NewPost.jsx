@@ -47,24 +47,27 @@ export default function NewPost({token}) {
            
       
     return (
-        <>
+        <div id="newPostContainer">
         {!success?<h2>New Post</h2>:<h2>Post submitted!</h2> }
         
         {!success? 
          <form onSubmit={createPost}>
             <div>
               <label htmlFor = "title">Title:</label>
+              <br />
               <input type="text" id = "title" name = "title" value = {title}
               onChange={(event) => setTitle(event.target.value)}/>
             </div>
             <br/>
             <div>
               <label htmlFor = "description">Description:</label>
+              <br />
               <input type="text" id = "description" name = "description" value = {description} onChange={(event) => setDescription(event.target.value)}/>
             </div>
             <br/>
             <div>
               <label htmlFor = "price">Price:</label>
+              <br />
               <input type="text" id = "price" name = "price" value = {price} onChange={(event) => setPrice(event.target.value)}/>
             </div>
             <br/>
@@ -74,6 +77,8 @@ export default function NewPost({token}) {
          :
          <button onClick={()=>{setSuccess(false)}}>Post again</button>
         }
-        </>
+        
+        </div>
     )
+   
 }
