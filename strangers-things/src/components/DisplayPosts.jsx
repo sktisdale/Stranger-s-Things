@@ -26,16 +26,18 @@ export default function Posts({ token, user }) {
 
     }, [])
 
-    return (
+    return (<>
+        
         <div className="centeredContainer"> {/* Correct class name here */}
+            <h3 className="postHeader">Posts</h3>
             {posts.map((post) => {
                 let yourpost = (post.author.username === user);
                 return (
                     <div className="postContainer" key={post._id}>
                         <div className="postInfo">
                             <h3 className="postTitle">{post.title}</h3>
-                            <p className="descr">Description:{post.description}</p>
-                            <p className="price">Price:{post.price}</p>
+                            <p className="descr">Description: {post.description}</p>
+                            <p className="price">Price: {post.price}</p>
                             {yourpost ? 
                             <button onClick={() => DeletePost(post._id)}>Delete</button> 
                             : token ?
@@ -45,5 +47,6 @@ export default function Posts({ token, user }) {
                 );
             })}
         </div>
+        </>
     );
 }
